@@ -41,6 +41,7 @@ class Epub {
       `zip -X0 ${this.get('bookPath')} ./mimetype`,
       `zip -X9Dr ${this.get('bookPath')} ./META-INF -x *.DS_Store`,
       `zip -X9Dr ${this.get('bookPath')} ./OPS -x *.DS_Store`,
+      `zip -X9Dr ${this.get('bookPath')} ./OEBPS -x *.DS_Store`,
     ].join(' && ')
   }
 
