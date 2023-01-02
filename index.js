@@ -39,8 +39,13 @@ class Epub {
   compile() {
     return [
       `zip -X0 ${this.get('bookPath')} ./mimetype`,
-      `zip -X9Dr ${this.get('bookPath')} ./META-INF -x *.DS_Store`,
       `zip -X9Dr ${this.get('bookPath')} ./OPS -x *.DS_Store`,
+    ].join(' && ')
+  }
+
+  compileOEBPS() {
+    return [
+      `zip -X9Dr ${this.get('bookPath')} ./META-INF -x *.DS_Store`,
       `zip -X9Dr ${this.get('bookPath')} ./OEBPS -x *.DS_Store`,
     ].join(' && ')
   }
@@ -105,6 +110,7 @@ class Epub {
     return new Promise((resolve, reject) =>
       chain
         .then(() => this.run('compile', this.get('input')))
+        .then(() => this.run('compileOEBPS', this.get('input')))
         .then(() => {
           console.log('Validating against EPUBCheck %s', epubcheckVersion)
           return this.run('validate', this.get('output'))
