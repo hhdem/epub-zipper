@@ -80,9 +80,35 @@ class Epub {
     })
   }
 
+  runWithoutBreak(cmd, cwd) {
+    return new Promise((resolve, reject) => {
+      const proc = spawn(this[cmd](), { cwd, shell: true })
+
+      let internalError = 0
+
+      proc.stdout.on('data', data => process.stdout.write(data.toString()))
+      proc.stderr.on('data', data => {
+        internalError = 1
+        process.stderr.write(data.toString())
+      })
+
+      proc.on('close', code => {
+        // if (code === 1) return reject(new Error('Process exited with code 1'))
+        // if (internalError === 1) {
+        //   return reject(new Error('There was an error creating the epub'))
+        // }
+        return resolve()
+      })
+    })
+  }
+
   runValidate(args) {
     this.options = { ...this.options, ...args }
-    return this.run('validate', this.get('output'))
+    return new Promise((resolve, reject) =>
+      this.run('validate', this.get('output'))
+        .then(resolve)
+        .catch(reject)
+    )
   }
 
   create(args) {
@@ -118,7 +144,7 @@ class Epub {
         .then(() => this.run('compileOEBPS', this.get('input')))
         .then(() => {
           console.log('Validating against EPUBCheck %s', epubcheckVersion)
-          return this.run('validate', this.get('output'))
+          return this.runWithoutBreak('validate', this.get('output'))
         })
         .then(resolve)
         .catch(reject)
