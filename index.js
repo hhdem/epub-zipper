@@ -80,6 +80,11 @@ class Epub {
     })
   }
 
+  runValidate(args) {
+    this.options = { ...this.options, ...args }
+    return this.run('validate', this.get('output'))
+  }
+
   create(args) {
     this.options = { ...this.options, ...args }
     const required = ['input', 'output']
