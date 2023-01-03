@@ -1,6 +1,6 @@
 {
   "name": "epub-zipper",
-  "version": "1.4.3",
+  "version": "1.4.3.2",
   "description": "Zips a directory as an epub. Returns a promise object.",
   "license": "MIT",
   "engines": {
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/msimmer/epub-zipper"
+    "url": "https://github.com/hhdem/epub-zipper"
   },
   "bugs": {
-    "url": "https://github.com/msimmer/epub-zipper/issues"
+    "url": "https://github.com/hhdem/epub-zipper/issues"
   },
-  "homepage": "https://github.com/msimmer/epub-zipper#readme",
+  "homepage": "https://github.com/hhdem/epub-zipper#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
