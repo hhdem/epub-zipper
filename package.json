@@ -1,5 +1,5 @@
 {
-  "name": "epub-zipper",
+  "name": "hhdem-epub-zipper",
   "version": "1.4.3",
   "description": "Zips a directory as an epub. Returns a promise object.",
   "license": "MIT",
@@ -7,8 +7,8 @@
     "node": ">= 6"
   },
   "author": {
-    "name": "Maxwell Simmer",
-    "url": "http://maxwellsimmer.com"
+    "name": "Lukelukewe@gmail.com",
+    "url": "http://hhdem.com"
   },
   "main": "dist/index.js",
   "scripts": {
