@@ -86,7 +86,7 @@ class Epub {
 
       let internalError = 0
 
-      proc.stdout.on('data', data => process.stdout.write(data.toString()))
+      // proc.stdout.on('data', data => process.stdout.write(data.toString()))
       proc.stderr.on('data', data => {
         internalError = 1
         process.stderr.write(data.toString())
