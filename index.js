@@ -84,7 +84,7 @@ class Epub {
     return new Promise((resolve, reject) => {
       const proc = spawn(this[cmd](), { cwd, shell: true })
 
-      let internalError = 0
+      const internalError = 0
 
       // proc.stdout.on('data', data => process.stdout.write(data.toString()))
       // proc.stderr.on('data', data => {
@@ -93,10 +93,10 @@ class Epub {
       // })
 
       proc.on('close', code => {
-        // if (code === 1) return reject(new Error('Process exited with code 1'))
-        // if (internalError === 1) {
-        //   return reject(new Error('There was an error creating the epub'))
-        // }
+        if (code === 1) return reject(new Error('Process exited with code 1'))
+        if (internalError === 1) {
+          return reject(new Error('There was an error creating the epub'))
+        }
         return resolve()
       })
     })

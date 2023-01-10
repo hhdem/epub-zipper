@@ -1,6 +1,6 @@
 {
   "name": "hhdem-epub-zipper",
-  "version": "1.4.5",
+  "version": "1.4.7",
   "description": "Zips a directory as an epub. Returns a promise object.",
   "license": "MIT",
   "engines": {
