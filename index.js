@@ -87,10 +87,10 @@ class Epub {
       let internalError = 0
 
       // proc.stdout.on('data', data => process.stdout.write(data.toString()))
-      proc.stderr.on('data', data => {
-        internalError = 1
-        process.stderr.write(data.toString())
-      })
+      // proc.stderr.on('data', data => {
+      //   internalError = 1
+      //   process.stderr.write(data.toString())
+      // })
 
       proc.on('close', code => {
         // if (code === 1) return reject(new Error('Process exited with code 1'))
