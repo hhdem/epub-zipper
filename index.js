@@ -93,7 +93,7 @@ class Epub {
       // })
 
       proc.on('close', code => {
-        if (code === 1) return reject(new Error('Process exited with code 1'))
+        // if (code === 1) return reject(new Error('Process exited with code 1'))
         if (internalError === 1) {
           return reject(new Error('There was an error creating the epub'))
         }
