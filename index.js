@@ -50,6 +50,12 @@ class Epub {
     ].join(' && ')
   }
 
+  compileAllOthers() {
+    return [
+      `zip -r ${this.get('bookPath')} ./* -x mimetype`,
+    ].join(' && ')
+  }
+
   validate() {
     return [
       `java -jar ${this.epubcheckPath}`,
@@ -142,6 +148,7 @@ class Epub {
       chain
         .then(() => this.run('compile', this.get('input')))
         .then(() => this.run('compileOEBPS', this.get('input')))
+        .then(() => this.run('compileAllOthers', this.get('input')))
         // .then(() => {
         //   console.log('Validating against EPUBCheck %s', epubcheckVersion)
         //   return this.runWithoutBreak('validate', this.get('output'))
