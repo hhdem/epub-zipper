@@ -46,7 +46,7 @@ class Epub {
   compileOEBPS() {
     return [
       `zip -X9Dr ${this.get('bookPath')} ./META-INF -x *.DS_Store`,
-      `zip -X9Dr -m ${this.get('bookPath')} ./OEBPS -x *.DS_Store`,
+      `zip -X9Dr ${this.get('bookPath')} ./OEBPS -x *.DS_Store`,
     ].join(' && ')
   }
 
